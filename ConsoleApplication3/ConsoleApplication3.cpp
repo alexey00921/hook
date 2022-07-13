@@ -57,6 +57,39 @@ int main(int argc, const char* argv[]) {
             }
         }
 
+        if (k < n) {
+            k++;
+            temp = false;
+            continue;
+        }
+
+        if (f2 < f1) {
+            x1 = x0;
+            x0 = x;
+            f0 = f2;
+
+            roboczy = true;
+
+            x = make_pair(x0.first + 1.5 * (x.first - x1.first), x0.second + 1.5 * (x.second - x1.second));
+            f2 = f(x);
+            v *= 1.25; cout << "wies";
+
+        }
+        else {
+            if (roboczy) {
+                x = x0;
+                f2 = f0;
+
+            }
+            else {
+                if (v > epsilon) v *= 0.8;
+            }
+            roboczy = false;
+        }
+
+    } while (v > epsilon);
+
+    cout << "f(" << x.first << " " << x.second << ") = " << f(x) << endl;
 
     return 0;
 }
