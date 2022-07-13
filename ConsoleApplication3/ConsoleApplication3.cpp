@@ -28,5 +28,35 @@ int main(int argc, const char* argv[]) {
     v = v0; 
 
 
+    do {
+        counter++;
+        if (temp) {
+            k = 1;
+        } temp = true;
+        cout << counter << endl << "k = " << k << endl << x.first << " " << x.second << endl << "f(x) = " << f(x) << endl << endl;
+
+        if (k == 1) x1 = make_pair(x.first + v, x.second); //3
+        if (k == 2) x1 = make_pair(x.first, x.second + v);
+
+        f1 = f(x1);
+
+        if (f1 < f2) {
+            x = x1;
+            f2 = f1;
+        }
+
+        else {
+            if (k == 1) x1 = make_pair(x.first - v, x.second); //6
+            if (k == 2) x1 = make_pair(x.first, x.second - v);
+
+            f1 = f(x1);
+
+            if (f1 < f2) {
+                x = x1;
+                f2 = f1;
+            }
+        }
+
+
     return 0;
 }
